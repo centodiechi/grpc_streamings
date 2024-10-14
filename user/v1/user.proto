@@ -1,0 +1,50 @@
+syntax="proto3";
+
+package user.v1;
+
+option go_package = "user/v1";
+
+message User {
+    string uid = 1;
+    string email = 2;
+    string password = 3; 
+    Profile profile = 4;
+    Role role = 5;
+}
+
+message Profile {
+    string firstname = 1;
+    string lastname = 2;
+}
+
+enum Role {
+    ROLE_VIEWER_UNSPECIFIED = 0;              
+    ROLE_EDITOR = 2;                
+    ROLE_ADMIN = 3;                  
+}
+
+message SignUpRequest {
+    User user = 1;
+}
+
+message SignUpResponse {
+    string message = 2;
+}
+
+message LoginRequest {
+    string email = 1;          
+    string password = 2;       
+}
+
+message LoginResponse {
+    string token = 1;          
+    string message = 2;        
+}
+
+service RegisterService {
+    rpc SignUp(SignUpRequest) returns (SignUpResponse);
+}
+
+service AuthService {
+    rpc Login(LoginRequest) returns (LoginResponse);
+}

@@ -1,4 +1,4 @@
-module github.com/centodiechi/grpc_streamings
+module github.com/centodiechi/unary_streams
 
 go 1.23.2
 

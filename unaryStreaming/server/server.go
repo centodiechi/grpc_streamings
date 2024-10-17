@@ -3,9 +3,9 @@ package unarystreaming
 import (
 	"context"
 
-	userpb "github.com/centodiechi/grpc_streamings/protos/user/v1"
-	storage "github.com/centodiechi/grpc_streamings/unaryStreaming/storage_provider"
-	"github.com/centodiechi/grpc_streamings/unaryStreaming/utils"
+	userpb "github.com/centodiechi/unary_streams/protos/user/v1"
+	storage "github.com/centodiechi/unary_streams/unaryStreaming/storage_provider"
+	"github.com/centodiechi/unary_streams/unaryStreaming/utils"
 	"go.uber.org/zap"
 )
 
@@ -47,5 +47,10 @@ func (ls *LoginService) Login(ctx context.Context, req *userpb.LoginRequest) (*u
 	if err != nil {
 		return &userpb.LoginResponse{Message: "Error Occured"}, err
 	}
+	Logger, err := zap.NewProduction()
+	if err != nil {
+		return nil, err
+	}
+	Logger.With(zap.Any("User", req.Email)).Info("User Logged In")
 	return &userpb.LoginResponse{Message: "logged in"}, nil
 }

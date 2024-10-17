@@ -4,9 +4,9 @@ import (
 	"log"
 	"net"
 
-	userpb "github.com/centodiechi/grpc_streamings/protos/user/v1"
-	server "github.com/centodiechi/grpc_streamings/unaryStreaming/server"
-	storage "github.com/centodiechi/grpc_streamings/unaryStreaming/storage_provider"
+	userpb "github.com/centodiechi/unary_streams/protos/user/v1"
+	server "github.com/centodiechi/unary_streams/unaryStreaming/server"
+	storage "github.com/centodiechi/unary_streams/unaryStreaming/storage_provider"
 	"google.golang.org/grpc"
 
 	"go.uber.org/zap"
